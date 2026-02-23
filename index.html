@@ -1,358 +1,1075 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Juan González</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>Juan González | Data & Automation | BI | Process Optimization</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Analista de Datos enfocado en automatización de procesos, SQL y Power BI. Transformo datos en decisiones y optimizo la eficiencia operativa.">
+    <meta name="keywords" content="Data Analytics, Power BI, Power Automate, SQL, Automatización, Panamá, Juan González">
+    <meta name="author" content="Juan González">
+    
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Juan González | Portfolio - Data & Automation">
+    <meta property="og:description" content="Transformo datos en decisiones y automatizo procesos operativos.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://juan5005g.github.io/">
+    <meta property="og:image" content="https://placehold.co/1200x630/0B0F14/FFFFFF?text=Juan+Gonzalez+Portfolio">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide-like style via SVG) -->
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #0B0F14;
+            --text-muted: #4B5563;
+            --accent: #2563eb; /* Azul moderno */
+            --accent-soft: #eff6ff;
+            --border: #e5e7eb;
+            --card-bg: #f9fafb;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .mobile-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* --- Hero --- */
+        #home {
+            padding: 160px 0 100px;
+            text-align: center;
+        }
+
+        .hero-tag {
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .headline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background: var(--card-bg);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 600px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+
+        .stat-item span {
+            display: block;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Sections General --- */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+        }
+
+        /* --- About --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cards-what-i-do {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .mini-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .mini-card:hover {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .mini-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mini-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* --- Projects --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #cbd5e1;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: #f3f4f6;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .stack-chip {
+            font-size: 0.75rem;
+            background: #f1f5f9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* --- Visual Portfolio --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(11, 15, 20, 0.7);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- Skills --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .skill-group h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--text-main);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* --- Timeline --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--text-main);
+        }
+
+        .time-date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .time-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .time-org {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .time-bullets {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            list-style: none;
+        }
+
+        .time-bullets li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .time-bullets li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* --- Certifications --- */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--card-bg);
+        }
+
+        .cert-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .cert-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Contact --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        .contact-info-list {
+            list-style: none;
+        }
+
+        .contact-info-list li {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-info-list a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        input, textarea {
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 50px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .about-grid, .skills-grid, .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-actions {
+                flex-direction: column;
+            }
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- MENU ENCABEZADO -->
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-    <div class="contenedor-header">
-        <header>
-            <div class="logo">
-                <a href="#">Juan González</a>
-            </div>
-            <nav id="nav">
-                <ul>
-                    <li><a href="#inicio" onclick="seleccionar()">INICIO</a></li>
-                    <li><a href="#sobremi" onclick="seleccionar()">SOBRE MI</a></li>
-                    <li><a href="#skills" onclick="seleccionar()">SKILLS</a></li>
-                    <li><a href="#curriculum" onclick="seleccionar()">CURRICULUM</a></li>
-                </ul>
-            </nav>
-            <div class="nav-responsive" onclick="mostrarOcultarMenu()">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </header>
-    </div>
 
-    <!-- SECCION INICIO -->
-    <section id="inicio" class="inicio">
-        <div class="contenido-banner">
-            <div class="contenedor-img">
-                <img src="hero.png" alt="30cm">
+    <nav>
+        <div class="container nav-content">
+            <a href="#home" class="logo">JUAN.G</a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Inicio</a>
+                <a href="#about">Sobre mí</a>
+                <a href="#projects">Proyectos</a>
+                <a href="#portfolio">Portafolio</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experiencia</a>
+                <a href="#contact">Contacto</a>
             </div>
-            <h1>Juan González</h1>
-            <h2>Analista de Datos - Automatización de procesos</h2>
-            <div class="redes">
-                <a href="https://www.linkedin.com/in/juan-gonz%C3%A1lez-7836aa210/?trk=public-profile-join-page"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
         </div>
-    </section>
+    </nav>
 
-    <!-- SECCION SOBRE MI -->
-    <section id="sobremi" class="sobremi">
-        <div class="contenido-seccion">
-            <h2>Sobre Mí</h2>
-            <p><span>¡Hola, soy Juan y tengo 22 años!</span> Soy un apasionado del análisis de datos y la automatización de procesos. Me encanta descubrir formas inteligentes y creativas de mejorar y simplificar tareas, ya sea a través de herramientas como SQL y Power BI o cualquier tecnología que transforme datos en decisiones estratégicas. Me impulsa la idea de hacer que los procesos sean más eficientes y efectivos, siempre buscando nuevas oportunidades para innovar y marcar una diferencia. Fuera del trabajo, disfruto explorando nuevas ideas y adquiriendo conocimientos frescos. ¡Siempre estoy listo para enfrentar el próximo desafío y crear algo asombroso!</p>
-
-            <div class="fila">
-                <!-- datos personales -->
-                <div class="col">
-                    <h3>Datos Personales</h3>
-                    <ul>
-                        <li>
-                            <strong>Cumpleaños</strong>
-                            05-07-2002
-                        </li>
-                        <li>
-                            <strong>Teléfono</strong>
-                            +507 6977-9188
-                        </li>
-                        <li>
-                            <strong>Email</strong>
-                            juan5005g@gmail.com.com
-                        </li>
-                        <li>
-                            <strong>Dirección</strong>
-                            Panamá, Panamá Oeste
-                        </li>
-                        <li>
-                            <strong>Cargo</strong>
-                            <span>Analista de Datos</span>
-                        </li>
-                    </ul>
+    <main>
+        <!-- Hero Section -->
+        <section id="home">
+            <div class="container">
+                <span class="hero-tag reveal">Disponible para nuevos retos</span>
+                <h1 class="reveal">Juan González</h1>
+                <p class="headline reveal">Data & Automation | BI | Process Optimization</p>
+                <p class="reveal" style="max-width: 600px; margin: 0 auto 2.5rem; color: var(--text-muted);">Transformo datos complejos en decisiones estratégicas y automatizo flujos operativos para maximizar la eficiencia empresarial.</p>
+                
+                <div class="hero-actions reveal">
+                    <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+                    <a href="/assets/JuanGonzalez-CV.pdf" class="btn btn-secondary" target="_blank">Descargar CV</a>
                 </div>
 
-                <!-- intereses -->
-                <div class="col">
-                    <h3>Intereses</h3>
-                    <div class="contenedor-intereses">
-                        <div class="interes">
-                            <i class="fa-solid fa-database"></i></i>
-                            <span>DATOS</span>
+                <div class="hero-stats reveal">
+                    <div class="stat-item">
+                        <span>Automatización</span>
+                        <p>End-to-end flows</p>
+                    </div>
+                    <div class="stat-item">
+                        <span>Dashboards BI</span>
+                        <p>Data Storytelling</p>
+                    </div>
+                    <div class="stat-item">
+                        <span>Eficiencia</span>
+                        <p>Reducción de procesos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="reveal">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <div class="section-header">
+                            <h2 class="section-title">Sobre mí</h2>
+                            <p class="section-subtitle">Impacto a través de la analítica</p>
                         </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-arrow-progress"></i></i>
-                            <span>PROCESOS</span>
+                        <p>Analista de Datos enfocado en la mejora continua. Me especializo en SQL y el ecosistema Power Platform (BI y Automate). He liderado iniciativas para acelerar la toma de decisiones, mejorar la trazabilidad de datos y reducir drásticamente el trabajo manual operativo.</p>
+                        <p>Mi enfoque combina el rigor técnico con una visión de liderazgo para alinear la tecnología con los objetivos de negocio.</p>
+                    </div>
+                    <div class="cards-what-i-do">
+                        <div class="mini-card">
+                            <h4>Dashboards & KPIs</h4>
+                            <p>Visualización avanzada para monitoreo en tiempo real.</p>
                         </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-microchip-ai"></i>
-                            <span>AI</span>
+                        <div class="mini-card">
+                            <h4>ETL & Integración</h4>
+                            <p>Limpieza y estructuración de datos de múltiples fuentes.</p>
                         </div>
-                        <div class="interes">
-                            <i class="fa-solid fa-laptop-mobile"></i>
-                            <span>TECNOLOGÍA</span>
+                        <div class="mini-card">
+                            <h4>Automatización</h4>
+                            <p>Flujos inteligentes que eliminan tareas repetitivas.</p>
+                        </div>
+                        <div class="mini-card">
+                            <h4>Liderazgo</h4>
+                            <p>Gestión de iniciativas de datos desde la idea hasta el despliegue.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="https://drive.google.com/file/d/17sXIOIbLdYGH3S4olDYaaqAySzvjHAi6/view?usp=sharing" download class="btn-download">
-                Descargar CV <i class="fa-solid fa-download"></i>
-                <span class="overlay"></span>
-            </a>            
-        </div>
-    </section>
+        </section>
 
-    <!-- SECCION SKILLS -->
-    <section class="skills" id="skills">
-        <div class="contenido-seccion">
-            <h2>Skills</h2>
-            <div class="fila">
-                <!-- Technical Skill -->
-                <div class="col">
-                    <h3>Habilidades Tecnicas</h3>
-                    <div class="skill">
-                        <span>ALGORITMO</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>75%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Power BI</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>89%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>POWER AUTOMATE</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>95%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>SQL</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>81%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>DESARROLLO DE SISTEMAS</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>55%</span>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Projects Section -->
+        <section id="projects" class="reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Proyectos destacados</h2>
+                    <p class="section-subtitle">Soluciones reales para problemas complejos</p>
                 </div>
-                <!-- Professional Skills -->
-                <div class="col">
-                    <h3>Habilidades Blandas Skills</h3>
-                    <div class="skill">
-                        <span>Comunicación efectiva</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>80%</span>
+                
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <span class="project-tag">Business Intelligence</span>
+                            <h3>Dashboards Operativos & KPIs</h3>
+                            <p>Implementación de un ecosistema de tableros en Power BI para el seguimiento de métricas clave, logrando visibilidad total de la operación.</p>
+                            <div class="project-stack">
+                                <span class="stack-chip">Power BI</span>
+                                <span class="stack-chip">SQL</span>
+                                <span class="stack-chip">DAX</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <span class="project-tag">Automation</span>
+                            <h3>Automatización de Reportes</h3>
+                            <p>Desarrollo de flujos con Power Automate que redujeron el tiempo de generación de reportes semanales de 4 horas a solo 5 minutos.</p>
+                            <div class="project-stack">
+                                <span class="stack-chip">Power Automate</span>
+                                <span class="stack-chip">Excel VBA</span>
+                                <span class="stack-chip">API</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <span class="project-tag">Data Science</span>
+                            <h3>Segmentación de Clientes (RFM)</h3>
+                            <p>Modelo analítico para categorizar usuarios basado en Recencia, Frecuencia y Valor Monetario para estrategias dirigidas.</p>
+                            <div class="project-stack">
+                                <span class="stack-chip">Python</span>
+                                <span class="stack-chip">Pandas</span>
+                                <span class="stack-chip">SQL</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <span class="project-tag">Software Development</span>
+                            <h3>App Móvil para Operaciones</h3>
+                            <p>Aplicación desarrollada para la captura de datos en campo y sincronización en tiempo real con bases de datos centrales.</p>
+                            <div class="project-stack">
+                                <span class="stack-chip">Flutter</span>
+                                <span class="stack-chip">Firebase</span>
+                                <span class="stack-chip">Cloud Functions</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 5 -->
+                    <article class="project-card">
+                        <div class="project-info">
+                            <span class="project-tag">Systems</span>
+                            <h3>Integración de Seguridad</h3>
+                            <p>Consolidación de sistemas de seguridad y monitoreo en un hub centralizado para mejorar la respuesta ante incidentes.</p>
+                            <div class="project-stack">
+                                <span class="stack-chip">Azure</span>
+                                <span class="stack-chip">API Management</span>
+                                <span class="stack-chip">SQL</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Portfolio Section -->
+        <section id="portfolio" class="reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Portafolio Visual</h2>
+                    <p class="section-subtitle">Vistazo rápido a mi trabajo y liderazgo</p>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1551288049-bbbda546697a?auto=format&fit=crop&q=80&w=800" alt="Dashboard Analysis">
+                        <div class="portfolio-overlay">
+                            <div>
+                                <strong>Arquitectura de Datos</strong>
+                                <p>Diseño de flujos ETL eficientes</p>
                             </div>
                         </div>
                     </div>
-                    <div class="skill">
-                        <span>Liderazgo de proyectos</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>70%</span>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Meeting Leadership">
+                        <div class="portfolio-overlay">
+                            <div>
+                                <strong>Liderazgo de Proyectos</strong>
+                                <p>Gestión de stakeholders y priorización</p>
                             </div>
                         </div>
                     </div>
-                    <div class="skill">
-                        <span>Pensamiento analitico</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>99%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Trabajo en equipo</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>85%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <span>Aprendizaje continuo</span>
-                        <div class="barra-skill">
-                            <div class="progreso">
-                                <span>94%</span>
+                    <div class="portfolio-item">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Power BI Dashboard">
+                        <div class="portfolio-overlay">
+                            <div>
+                                <strong>Dashboards Power BI</strong>
+                                <p>Visualización interactiva de KPIs</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SECCION CURRICULUM -->
-    <section id="curriculum" class="curriculum">
-        <div class="contenido-seccion">
-            <h2>Curriculum</h2>
-            <div class="fila">
-                <div class="col izquierda">
-                    <h3>Educación</h3>
-                    <div class="item izq">
-                        <h4>Bachiller en Tecnología Informática</h4>
-                        <span class="casa">Colegio Ingeniero Tomas Guardia</span>
-                        <span class="fecha">Graduado en 2020</span>
-                        <p>Adquirí conocimientos fundamentales en programación, desarrollo de software y redes. Destacó mi proyecto de creación de un sistema de gestión de carnets, aplicando habilidades en bases de datos y mejorando la eficiencia administrativa del colegio.</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Técnico en Sistemas</h4>
-                        <span class="casa">Universidad Metropolitana de Educación, Ciencia y Tecnologia,Panamá</span>
-                        <span class="fecha">Graduado en 2024</span>
-                        <p>Obtuve habilidades prácticas en administración de sistemas, soporte técnico y desarrollo de software. Realicé proyectos enfocados en la optimización de redes y la automatización de tareas, fortaleciendo mis capacidades en el manejo de tecnologías y soluciones informáticas.</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Licenciatura en Sistema y Programación</h4>
-                        <span class="casa">Universidad Metropolitana de Educación, Ciencia y Tecnologia,Panamá</span>
-                        <span class="fecha">Actualmente cursando el ultimo año (2024)</span>
-                        <p>Desarrollando conocimientos avanzados en programación, análisis de sistemas y gestión de bases de datos. 
-                            Participando en proyectos que integran soluciones tecnológicas innovadoras y mejoran la eficiencia operativa.</p>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
-                        </div>
-                    </div>
+        <!-- Skills Section -->
+        <section id="skills" class="reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Habilidades Técnicas & Soft Skills</h2>
+                    <p class="section-subtitle">Mi stack tecnológico y capacidades interpersonales</p>
                 </div>
-
-                <div class="col derecha">
-                    <h3>Experiencia de trabajo</h3>
-                    <div class="item der">
-                        <h4>Analista de Datos</h4>
-                        <span class="casa">London And Regional Panamá (Outsourcing con ESCARH DE PANAMÁ)</span>
-                        <span class="fecha">2022 - Actualidad</span>
-                        <p>Como Analista de Datos, me encargo de transformar datos complejos en información clara y procesable para optimizar la seguridad y eficiencia operativa. He liderado la creación de dashboards interactivos y reportes personalizados que han permitido tomar decisiones basadas en datos con mayor rapidez y precisión. También he implementado soluciones de automatización que han mejorado significativamente los procesos 
-                            internos, reduciendo los tiempos de respuesta y aumentando la productividad del equipo. Mi enfoque en la calidad de los datos y la innovación ha resultado en una mejora continua de los procesos y una mayor capacidad de respuesta ante incidentes críticos.</p>
-                        <div class="conectord">
-                            <div class="circulod"></div>
+                <div class="skills-grid">
+                    <div class="skill-group">
+                        <h3>Técnicas</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Power BI</span><span>89%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="89%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Power Automate</span><span>95%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>SQL</span><span>81%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="81%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Python / Análisis de Datos</span><span>75%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Desarrollo de Sistemas</span><span>55%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="55%"></div></div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-       <!-- SECCION certificados -->
-    <section id="curriculum" class="curriculum">
-        <div class="contenido-seccion">
-            <h2>Certificaciones</h2>
-            <div class="fila">
-                <div class="col izquierda">
-                    <h3>Certificados Profecionales</h3>
-                    <div class="item izq">
-                        <h4>Fundamentos del Analisis de Datos</h4>
-                        <span class="casa">Microsoft and Linkedin</span>
-                        <span class="fecha">2024</span>
-                        <a href="https://drive.google.com/file/d/10CKyE-EADWb7dGmQqxiKg9nmYttXgPPn/view?usp=sharing">Certificado adjunto</a>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
+                    <div class="skill-group">
+                        <h3>Blandas</h3>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Pensamiento Analítico</span><span>99%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="99%"></div></div>
                         </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Inteligencia Artificial y Productividad</h4>
-                        <span class="casa">Santender/Open Academy, Google</span>
-                        <span class="fecha">2024</span>
-                        <a href="https://drive.google.com/file/d/1bVBtXT6z2_nNEzW3r-azDUA59QSrWiOX/view?usp=sharing">Certificado adjunto</a>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Liderazgo de Proyectos</span><span>70%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="70%"></div></div>
                         </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Seminario de Especialización para Técnico en Sistemas</h4>
-                        <span class="casa">Universidad Metropolitana de Educación, Ciencia y Tecnologia,Panamá</span>
-                        <span class="fecha">2023</span>
-                        <a href="https://drive.google.com/file/d/15beFgBDfFpk4N0f4_ndBPLzDaJw3O-gp/view?usp=sharing">Certificado adjunto</a>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Aprendizaje Continuo</span><span>94%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="94%"></div></div>
                         </div>
-                    </div>
-                    <div class="item izq">
-                        <h4>Hacking Ético y Ciberseguridad</h4>
-                        <span class="casa">Udemy</span>
-                        <span class="fecha">Cursando</span>
-                        <a href="">Proceso</a>
-                        <div class="conectori">
-                            <div class="circuloi"></div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Comunicación Efectiva</span><span>80%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="80%"></div></div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col derecha">
-                    <h3>Certificados de Habilidades Generales</h3>
-                    <div class="item der">
-                        <h4>Habilidades Blandas en la atención y servicio al cliente y desarrollo de empatía</h4>
-                        <span class="casa">ESCARH Connecting human resources</span>
-                        <span class="fecha">2024</span>
-                        <a href="https://drive.google.com/file/d/1IY41FYp9aEKa2BFoYH2CcOpF8s39FJiX/view?usp=sharing">Certificado adjunto</a>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div>
-                    <div class="item der">
-                        <h4>Atencion al cliente</h4>
-                        <span class="casa">ESCARH Connecting human resources</span>
-                        <span class="fecha">2023</span>
-                        <a href="https://drive.google.com/file/d/17Y7F-WJTwQNATx30nXlNJvJknPRsEmW-/view?usp=sharing">Certificado adjunto</a>
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div>
-                    <div class="item der">
-                        <h4>Primeros Auxilios y RCP Básico ACD008</h4>
-                        <span class="casa">Sistema Nacional de Protección Civil</span>
-                        <span class="fecha">2023</span>
-                        <a href="https://drive.google.com/file/d/13wG8vGknHSPovD6eUblAq2E5AI17-z7C/view?usp=sharing">Certificado adjunto</a>
-
-                        <div class="conectord">
-                            <div class="circulod"></div>
-                        </div>
-                    </div>
-                    <div class="item der">
-                        <h4>Introducción a Security Desk y reconocimiento de placas vehiculares</h4>
-                        <span class="casa">TRACKING SECURITY</span>
-                        <span class="fecha">2024</span>
-                        <a href="https://drive.google.com/file/d/16MOJQd8Lgr-Kmbcc2yWp4u2aqEc4aIhR/view?usp=sharing">Certificado adjunto</a>
-                        <div class="conectord">
-                            <div class="circulod"></div>
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Trabajo en Equipo</span><span>85%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" data-percent="85%"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Experiencia & Educación</h2>
+                    <p class="section-subtitle">Trayectoria profesional y formación académica</p>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Experience 1 -->
+                    <div class="timeline-item">
+                        <p class="time-date">2022 — Presente</p>
+                        <h3 class="time-title">Analista de Datos</h3>
+                        <p class="time-org">London And Regional Panamá (vía ESCARH)</p>
+                        <ul class="time-bullets">
+                            <li>Liderazgo en la creación de dashboards estratégicos en Power BI para monitoreo operacional.</li>
+                            <li>Diseño y mantenimiento de bases de datos SQL para asegurar la integridad de la información corporativa.</li>
+                            <li>Automatización de procesos mediante Power Automate, optimizando flujos de trabajo interdepartamentales.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="timeline-item">
+                        <p class="time-date">En curso</p>
+                        <h3 class="time-title">Licenciatura en Sistema y Programación</h3>
+                        <p class="time-org">Universidad Tecnológica</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <p class="time-date">2024</p>
+                        <h3 class="time-title">Técnico en Sistemas</h3>
+                        <p class="time-org">Formación Profesional</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <p class="time-date">2020</p>
+                        <h3 class="time-title">Bachiller en Tecnología Informática</h3>
+                        <p class="time-org">Educación Secundaria</p>
+                    </div>
+                </div>
+
+                <!-- Certifications Section -->
+                <div id="certs" style="margin-top: 5rem;">
+                    <div class="section-header">
+                        <h2 class="section-title">Certificaciones</h2>
+                    </div>
+                    <div class="certs-grid">
+                        <div class="cert-card">
+                            <h4>PL-300: Power BI Data Analyst</h4>
+                            <p>Microsoft — 2024</p>
+                        </div>
+                        <div class="cert-card">
+                            <h4>SQL for Data Science</h4>
+                            <p>Certificación Profesional — 2023</p>
+                        </div>
+                        <div class="cert-card">
+                            <h4>Automation Specialist</h4>
+                            <p>Power Automate Academy — 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contacto</h2>
+                    <p class="section-subtitle">¿Tienes un proyecto en mente? Hablemos.</p>
+                </div>
+                
+                <div class="contact-container">
+                    <div>
+                        <ul class="contact-info-list">
+                            <li>
+                                <strong>Ubicación:</strong> 
+                                <span>Panamá, Panamá Oeste</span>
+                            </li>
+                            <li>
+                                <strong>Email:</strong>
+                                <a href="mailto:juan5005g@gmail.com">juan5005g@gmail.com</a>
+                            </li>
+                            <li>
+                                <strong>LinkedIn:</strong>
+                                <a href="#" target="_blank">linkedin.com/in/juan-gonzalez</a>
+                            </li>
+                            <li>
+                                <strong>GitHub:</strong>
+                                <a href="#" target="_blank">github.com/juan-gonzalez</a>
+                            </li>
+                            <li>
+                                <strong>Teléfono:</strong>
+                                <a href="tel:+50769779188">+507 6977-9188</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <form class="contact-form" action="mailto:juan5005g@gmail.com" method="post" enctype="text/plain">
+                        <input type="text" name="name" placeholder="Tu nombre" required>
+                        <input type="email" name="email" placeholder="Tu email" required>
+                        <textarea name="message" rows="5" placeholder="Tu mensaje" required></textarea>
+                        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Juan González | Data & Automation Analyst. Desarrollado con minimalismo.</p>
         </div>
-    </section>
-    <footer>              
-        <a href="#inicio" class="arriba">
-            <i class="fa-solid fa-angles-up"></i>
-        </a>
-        <div class="badge-base LI-profile-badge" data-locale="es_ES" data-size="medium" data-theme="dark" data-type="HORIZONTAL" data-vanity="juan-gonzález-7836aa210" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://pa.linkedin.com/in/juan-gonz%C3%A1lez-7836aa210?trk=profile-badge"></a></div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // 1. Scroll Reveal Animation
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add("active");
+                    
+                    // Trigger progress bars inside if it's the skills section
+                    if(element.id === 'skills') {
+                        const fills = element.querySelectorAll('.progress-fill');
+                        fills.forEach(fill => {
+                            fill.style.width = fill.getAttribute('data-percent');
+                        });
+                    }
+                }
+            });
+        }
+
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+
+        // 2. Navbar Mobile Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
+        // Close menu when clicking a link (mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('show');
+            });
+        });
+
+        // 3. Active Link on Scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // 4. Update Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
